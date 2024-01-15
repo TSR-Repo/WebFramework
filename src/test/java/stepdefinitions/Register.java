@@ -50,8 +50,8 @@ public class Register {
         registerBtn.click();
     }
 
-    @Then("the user should be logged in and redirected to their account page")
-    public void the_user_should_be_logged_in() {
+    @Then("the user should be registered and logged in")
+    public void the_user_should_be_registered_and_logged_in() {
         String currentUrl = driver.getCurrentUrl();
         String accountPageUrl = "https://askomdch.com/account/";
 

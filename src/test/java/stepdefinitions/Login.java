@@ -43,5 +43,17 @@ public class Login {
         String actualErrorMessage = driver.findElement(By.cssSelector("ul[role='alert'] li")).getText();
         String expectedErrorMessage = string;
         Assert.assertEquals(expectedErrorMessage, actualErrorMessage);
+
+        driver.quit();
+    }
+
+    @Then("the user should be logged in and redirected to their account page")
+    public void user_should_be_logged_in() {
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "https://askomdch.com/account/";
+
+        Assert.assertEquals(expectedUrl, currentUrl);
+
+        driver.quit();
     }
 }
