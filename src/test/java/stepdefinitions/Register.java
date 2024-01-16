@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en.And;
 
 public class Register {
     WebDriver driver;
@@ -51,8 +50,8 @@ public class Register {
         registerBtn.click();
     }
 
-    @Then("the user should be logged in and redirected to their account page")
-    public void the_user_should_be_logged_in() {
+    @Then("the user should be registered and logged in")
+    public void the_user_should_be_registered_and_logged_in() {
         String currentUrl = driver.getCurrentUrl();
         String accountPageUrl = "https://askomdch.com/account/";
 
