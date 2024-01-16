@@ -4,7 +4,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/features/authentication", glue = "stepdefinitions", plugin = {"pretty"}, tags = "@logout")
+@CucumberOptions(features = "src/test/resources/features/authentication", glue = "stepdefinitions", plugin = {"pretty"}, tags = "@EditProfile")
 public class RunnerTest {
 
 }
