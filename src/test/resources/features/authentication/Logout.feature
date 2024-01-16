@@ -1,4 +1,5 @@
 Feature:Logout
+@logout
 Scenario: check if user can be able to logout
         Given a user is logged in
         And the user is on account page
