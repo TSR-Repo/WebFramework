@@ -8,10 +8,11 @@ import factory.DriverManager;
 import io.cucumber.java.en.*;
 
 public class Logout {
-WebDriver driver; 
+	private WebDriver driver;
+
 	@Given("a user is logged in")
 	public void a_user_is_logged_in() {
-		driver = DriverManager.initializeDriver();
+		driver = DriverManager.getDriver();
 		driver.get("https://askomdch.com/account/");
 		WebElement usernameLoginField = driver.findElement(By.id("username"));
 		usernameLoginField.sendKeys("wewison900@tsderp.com");
@@ -24,17 +25,17 @@ WebDriver driver;
 	@Given("the user is on account page")
 	public void the_user_is_on_account_page() {
 
-	WebElement accountHeader = driver.findElement(By.xpath("//h1[text()=\"Account\"]"));
-	String expectedHeader = "Account";
-	String actualHeader = accountHeader.getText();
-	Assert.assertEquals(actualHeader, expectedHeader);
+		WebElement accountHeader = driver.findElement(By.xpath("//h1[text()=\"Account\"]"));
+		String expectedHeader = "Account";
+		String actualHeader = accountHeader.getText();
+		Assert.assertEquals(actualHeader, expectedHeader);
 	}
 
 	@When("the user clicks on Logout link")
 	public void the_user_clicks_on_logout_link() {
 		WebElement logoutLink = driver.findElement(By.linkText("Logout"));
 		logoutLink.click();
-		
+
 	}
 
 	@Then("the user should be logged out")

@@ -10,11 +10,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Login {
-    WebDriver driver;
+    private WebDriver driver;
 
     @Given("a user in on the login page")
     public void the_user_in_on_the_login_page() {
-        driver = DriverManager.initializeDriver();
+        driver = DriverManager.getDriver();
         driver.get("https://askomdch.com/account/");
     }
 
@@ -41,8 +41,6 @@ public class Login {
         String actualErrorMessage = driver.findElement(By.cssSelector("ul[role='alert'] li")).getText();
         String expectedErrorMessage = string;
         Assert.assertEquals(expectedErrorMessage, actualErrorMessage);
-
-        // driver.quit();
     }
 
     @Then("the user should be logged in and redirected to their account page")
@@ -51,7 +49,5 @@ public class Login {
         String expectedUrl = "https://askomdch.com/account/";
 
         Assert.assertEquals(expectedUrl, currentUrl);
-
-        // driver.quit();
     }
 }

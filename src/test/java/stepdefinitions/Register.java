@@ -14,8 +14,8 @@ public class Register {
 
     @Given("a user is on is on home page")
     public void a_user_is_on_is_on_home_page() {
-        driver = DriverManager.initializeDriver();
-        driver.get("https://askomdch.com/");
+        driver = DriverManager.getDriver();
+        driver.get("https://askomdch.com/account/");
     }
 
     @When("the user navigates to the account page")
