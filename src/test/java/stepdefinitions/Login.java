@@ -8,6 +8,7 @@ import factory.DriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.AuthenticationPage;
 
 public class Login {
     private WebDriver driver;
@@ -15,7 +16,7 @@ public class Login {
     @Given("a user in on the login page")
     public void the_user_in_on_the_login_page() {
         driver = DriverManager.getDriver();
-        driver.get("https://askomdch.com/account/");
+        new AuthenticationPage(driver).openUrl("https://askomdch.com/account/");
     }
 
     @When("the user enters the username as {string}")
