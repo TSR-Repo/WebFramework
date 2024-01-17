@@ -38,8 +38,8 @@ public class BasePage {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator)).sendKeys(text);
     }
 
-    public void click(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    public void click(By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
     public void checkSimilarityOfText(String text1, String text2) {

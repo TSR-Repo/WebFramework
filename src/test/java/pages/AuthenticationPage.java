@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 public class AuthenticationPage extends BasePage {
     public AuthenticationPage(WebDriver driver) {
@@ -11,7 +10,8 @@ public class AuthenticationPage extends BasePage {
 
     By usernameLoginField = By.id("username");
     By passwordLoginField = By.id("password");
-    By loginBtn = By.name("login");
+    By loginBtnBy = By.name("login");
+    By errorMessageContainerBy = By.cssSelector("ul[role='alert'] li");
 
     public void enterUsername(String username) {
         addTextToInput(usernameLoginField, username);
@@ -21,7 +21,21 @@ public class AuthenticationPage extends BasePage {
         addTextToInput(passwordLoginField, password);
     }
 
+    public  void clickLoginButton() {
+        getElement(loginBtnBy).click();
+    }
+
+    public String getErrorMessageText() {
+        return getElement(errorMessageContainerBy).getText();
+    }
+
     public void doErrorsMatch(String actualErrorMessage, String expectedErrorMessage) {
         checkSimilarityOfText(actualErrorMessage, expectedErrorMessage);
+    }
+
+    public void login(String username, String password) {
+        enterUsername(username);
+        enterPassword(password);
+        clickLoginButton();
     }
 }

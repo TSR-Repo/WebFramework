@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import factory.DriverManager;
 import io.cucumber.java.en.*;
+import pages.AuthenticationPage;
 import pages.DashboardPage;
 
 public class Logout {
@@ -14,12 +15,7 @@ public class Logout {
 	@Given("a user is logged in")
 	public void a_user_is_logged_in() {
 		driver.get("https://askomdch.com/account/");
-		WebElement usernameLoginField = driver.findElement(By.id("username"));
-		usernameLoginField.sendKeys("wewison900@tsderp.com");
-		WebElement passwordLoginField = driver.findElement(By.id("password"));
-		passwordLoginField.sendKeys("password");
-		WebElement loginBtn = driver.findElement(By.name("login"));
-		loginBtn.click();
+		new AuthenticationPage(driver).login("wewison900@tsderp.com", "password");
 	}
 
 	@Given("the user is on account page")

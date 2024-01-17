@@ -1,8 +1,6 @@
 package stepdefinitions;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import factory.DriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -30,13 +28,12 @@ public class Login {
 
     @When("the user clicks on login button")
     public void the_user_clicks_on_login_button() {
-        WebElement loginBtn = driver.findElement(By.name("login"));
-        authPage.click(loginBtn);
+        authPage.clickLoginButton();
     }
 
     @Then("the login should fail with the message as {string}")
     public void the_login_should_fail_with_the_message_as(String string) {
-        String actualErrorMessage = driver.findElement(By.cssSelector("ul[role='alert'] li")).getText();
+        String actualErrorMessage = authPage.getErrorMessageText();
         String expectedErrorMessage = string;
         authPage.doErrorsMatch(actualErrorMessage, expectedErrorMessage);
     }
