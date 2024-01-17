@@ -1,18 +1,22 @@
 package stepdefinitions;
 
+import java.sql.Driver;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import factory.DriverManager;
 import io.cucumber.java.en.*;
+import pages.BasePage;
+import pages.DashboardPage;
 
 public class Logout {
-	private WebDriver driver;
+	private WebDriver driver = DriverManager.getDriver();
+	DashboardPage dashPage = new DashboardPage(driver);
 
 	@Given("a user is logged in")
 	public void a_user_is_logged_in() {
-		driver = DriverManager.getDriver();
 		driver.get("https://askomdch.com/account/");
 		WebElement usernameLoginField = driver.findElement(By.id("username"));
 		usernameLoginField.sendKeys("wewison900@tsderp.com");
@@ -33,9 +37,7 @@ public class Logout {
 
 	@When("the user clicks on Logout link")
 	public void the_user_clicks_on_logout_link() {
-		WebElement logoutLink = driver.findElement(By.linkText("Logout"));
-		logoutLink.click();
-
+		dashPage.logout();
 	}
 
 	@Then("the user should be logged out")
@@ -43,8 +45,7 @@ public class Logout {
 		WebElement loginText = driver.findElement(By.xpath("//h2[text()=\"Login\"]"));
 		String expectedloginText = "Login";
 		String actualloginText = loginText.getText();
-		Assert.assertEquals(actualloginText, expectedloginText);
-		driver.quit();
+		new BasePage(driver).checkSimilarityOfText(expectedloginText, actualloginText);
 	}
 
 }

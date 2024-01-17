@@ -20,6 +20,11 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    public WebElement getElement(By locator) {
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        return element;
+    }
+
     public void openUrl(String url) {
         driver.get(url);
     }
