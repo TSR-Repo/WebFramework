@@ -9,10 +9,14 @@ public class DashboardPage extends BasePage {
         super(driver);
     }
 
-    By logoutBtn = By.linkText("Logout");
+    By logoutBtnBy = By.linkText("Logout");
+    By headerBy = By.xpath("//h1[text()='Account']");
 
     public void logout() {
-        getElement(logoutBtn).click();
+        getElement(logoutBtnBy).click();
     }
-    
+
+    public String getPageHeaderText() {
+       return getElement(headerBy).getText();
+    }
 }

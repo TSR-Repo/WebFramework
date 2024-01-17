@@ -1,5 +1,5 @@
 Feature:Logout
-@logout
+@log
 Scenario: Logout
         Given a user is logged in
         And the user is on account page

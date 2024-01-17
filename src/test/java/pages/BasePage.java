@@ -25,6 +25,11 @@ public class BasePage {
         return element;
     }
 
+    public String getElementText(By locator) {
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        return element.getText();
+    }
+
     public void openUrl(String url) {
         driver.get(url);
     }

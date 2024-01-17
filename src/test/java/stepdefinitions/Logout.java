@@ -1,14 +1,10 @@
 package stepdefinitions;
 
-import java.sql.Driver;
-
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import factory.DriverManager;
 import io.cucumber.java.en.*;
-import pages.BasePage;
 import pages.DashboardPage;
 
 public class Logout {
@@ -28,11 +24,9 @@ public class Logout {
 
 	@Given("the user is on account page")
 	public void the_user_is_on_account_page() {
-
-		WebElement accountHeader = driver.findElement(By.xpath("//h1[text()=\"Account\"]"));
-		String expectedHeader = "Account";
-		String actualHeader = accountHeader.getText();
-		Assert.assertEquals(actualHeader, expectedHeader);
+		String actualAccountPageHeaderText = dashPage.getPageHeaderText();
+		String expectedPageHeaderText = "Account";
+		dashPage.checkSimilarityOfText(actualAccountPageHeaderText, expectedPageHeaderText);
 	}
 
 	@When("the user clicks on Logout link")
@@ -45,7 +39,6 @@ public class Logout {
 		WebElement loginText = driver.findElement(By.xpath("//h2[text()=\"Login\"]"));
 		String expectedloginText = "Login";
 		String actualloginText = loginText.getText();
-		new BasePage(driver).checkSimilarityOfText(expectedloginText, actualloginText);
+		dashPage.checkSimilarityOfText(expectedloginText, actualloginText);
 	}
-
 }
