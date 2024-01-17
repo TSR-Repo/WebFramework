@@ -1,4 +1,3 @@
-@log
 Feature:Logout
 @logout
 Scenario: Logout
