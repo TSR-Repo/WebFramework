@@ -20,16 +20,16 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    public void openUrl(String url) {
+        driver.get(url);
+    }
+
     public WebElement getElement(By locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public String getElementText(By locator) {
         return getElement(locator).getText();
-    }
-
-    public void openUrl(String url) {
-        driver.get(url);
     }
 
     public void addTextToInput(By locator, String text) {
