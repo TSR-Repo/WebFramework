@@ -21,13 +21,11 @@ public class BasePage {
     }
 
     public WebElement getElement(By locator) {
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        return element;
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public String getElementText(By locator) {
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        return element.getText();
+        return getElement(locator).getText();
     }
 
     public void openUrl(String url) {
