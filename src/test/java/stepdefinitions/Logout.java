@@ -4,21 +4,19 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.*;
+import factory.DriverManager;
 import io.cucumber.java.en.*;
 
 public class Logout {
 WebDriver driver; 
 	@Given("a user is logged in")
 	public void a_user_is_logged_in() {
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
+		driver = DriverManager.initializeDriver();
 		driver.get("https://askomdch.com/account/");
 		WebElement usernameLoginField = driver.findElement(By.id("username"));
-		usernameLoginField.sendKeys("podew79407@grassdev.com");
+		usernameLoginField.sendKeys("wewison900@tsderp.com");
 		WebElement passwordLoginField = driver.findElement(By.id("password"));
-		passwordLoginField.sendKeys("password123");
+		passwordLoginField.sendKeys("password");
 		WebElement loginBtn = driver.findElement(By.name("login"));
 		loginBtn.click();
 	}

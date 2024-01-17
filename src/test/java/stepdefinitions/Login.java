@@ -4,8 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import factory.DriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,8 +14,7 @@ public class Login {
 
     @Given("a user in on the login page")
     public void the_user_in_on_the_login_page() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver = DriverManager.initializeDriver();
         driver.get("https://askomdch.com/account/");
     }
 
@@ -44,7 +42,7 @@ public class Login {
         String expectedErrorMessage = string;
         Assert.assertEquals(expectedErrorMessage, actualErrorMessage);
 
-        driver.quit();
+        // driver.quit();
     }
 
     @Then("the user should be logged in and redirected to their account page")
@@ -54,6 +52,6 @@ public class Login {
 
         Assert.assertEquals(expectedUrl, currentUrl);
 
-        driver.quit();
+        // driver.quit();
     }
 }

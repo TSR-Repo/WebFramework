@@ -1,4 +1,4 @@
-@currentTest
+@log
 Feature: Login
 
     Scenario Outline: Login with invalid credentials
@@ -20,5 +20,5 @@ Feature: Login
         Then the user should be logged in and redirected to their account page
 
         Examples:
-            | username                | password    |
-            | podew79407@grassdev.com | password123 |
+            | username              | password |
+            | wewison900@tsderp.com | password |
