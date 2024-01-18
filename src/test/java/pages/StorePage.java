@@ -3,7 +3,6 @@ package pages;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -21,6 +20,8 @@ public class StorePage extends BasePage {
     By searchFieldBy = By.id("woocommerce-product-search-field-0");
     By searchBtnBy = By.xpath("//button[@type='submit']");
     By productsTitleContainersBy = By.className("woocommerce-loop-product__title");
+    By orderProductsBy = By.name("orderby");
+    By priceContainersBy = By.xpath("//a[text()='Add to cart']/preceding-sibling::span[@class='price']/span[@class='woocommerce-Price-amount amount']/bdi");
 
     public void navigateToStorePage() {
         getElement(storeLinkBy).click();
@@ -35,7 +36,6 @@ public class StorePage extends BasePage {
     }
 
     public void addProductToCart(String productName) {
-        //a[@aria-label='Add “Anchor Bracelet” to your cart']
         getElement(By.xpath("//a[@aria-label='Add “" + productName + "” to your cart']")).click();
     }
 
@@ -60,6 +60,32 @@ public class StorePage extends BasePage {
 
         for(String productName : productNames) {
             assertTrue(productName.contains(searchTerm));
+        }
+    }
+
+    public void orderProducts(String attribute) {
+        selectFromDropdown(orderProductsBy, attribute);
+    }
+
+    public void checkOrderOfProductsByPrice() {
+        List<WebElement> priceContainers = getElements(priceContainersBy);
+        List<Double> productPrices = new ArrayList<>();
+        
+        for(WebElement priceContainer : priceContainers) {
+            String priceString = priceContainer.getText();
+            String cleanedPriceString = priceString.replaceAll("[^\\d.]", "");
+            if (!cleanedPriceString.isEmpty()) {
+                try {
+                    Double price = Double.parseDouble(cleanedPriceString);
+                    productPrices.add(price);
+                } catch (NumberFormatException e) {
+                    
+                }
+            }
+        }
+
+        for(int i = 1; i < productPrices.size(); i++) {
+            assertTrue(productPrices.get(i) > productPrices.get(i - 1));
         }
     }
 }

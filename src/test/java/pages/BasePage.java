@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
@@ -49,4 +50,12 @@ public class BasePage {
         List<WebElement> elements = driver.findElements(locator);
         return elements;
     }
+
+    public void selectFromDropdown(By locator, String attribute) {
+        WebElement dropdownElement = getElement(locator);
+        Select dropdown = new Select(dropdownElement);
+        dropdown.selectByVisibleText(attribute);
+    }
+
+    
 }

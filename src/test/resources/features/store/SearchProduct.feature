@@ -4,7 +4,6 @@ Feature: Search Product
         Given a user is logged in
         And the user is on the store page
 
-    @product
     Scenario Outline: Search a product in the store
         When the user enters a "<search_term>"
         And the user clicks on the search button
