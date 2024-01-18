@@ -4,8 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import factory.DriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,9 +14,8 @@ public class Register {
 
     @Given("a user is on is on home page")
     public void a_user_is_on_is_on_home_page() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://askomdch.com/");
+        driver = DriverManager.getDriver();
+        driver.get("https://askomdch.com/account/");
     }
 
     @When("the user navigates to the account page")
