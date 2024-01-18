@@ -1,6 +1,7 @@
 package pages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -42,5 +43,10 @@ public class BasePage {
 
     public void checkSimilarityOfText(String text1, String text2) {
         Assert.assertEquals(text1, text2);
+    }
+
+    public List<WebElement> getElements(By locator) {
+        List<WebElement> elements = driver.findElements(locator);
+        return elements;
     }
 }
