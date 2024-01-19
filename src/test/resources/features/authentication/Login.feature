@@ -1,3 +1,4 @@
+@showcase
 Feature: Login
 
     Scenario Outline: Login with invalid credentials

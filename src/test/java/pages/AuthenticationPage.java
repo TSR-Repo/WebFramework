@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -37,5 +39,14 @@ public class AuthenticationPage extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickLoginButton();
+    }
+
+    public void isUserLoggedOut() throws NoSuchElementException {
+        try {
+            getElement(loginBtnBy);
+        }
+        catch (Exception e) {
+            throw new NoSuchElementException("USER IS NOT LOGGED OUT!");
+        }
     }
 }

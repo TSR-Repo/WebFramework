@@ -68,5 +68,8 @@ public class BasePage {
         }
     }
 
+    public void clearField(By locator) {
+        getElement(locator).clear();
+    }
     
 }

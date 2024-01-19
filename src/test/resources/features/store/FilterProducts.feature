@@ -1,3 +1,4 @@
+@showcase
 Feature: Filter Products
 
     Background:

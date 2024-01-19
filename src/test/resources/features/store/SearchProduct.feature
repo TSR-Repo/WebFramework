@@ -1,3 +1,4 @@
+@showcase
 Feature: Search Product
 
     Background:

@@ -21,6 +21,7 @@ public class AddProductToCart {
     @When("the user navigates to cart")
     public void the_user_clicks_on_view_cart_link() {
         storePage.viewCart();
+        driver.navigate().refresh();
     }
 
     @Then("the added {string} should be present in the cart")

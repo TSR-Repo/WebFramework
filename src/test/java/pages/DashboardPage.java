@@ -10,13 +10,18 @@ public class DashboardPage extends BasePage {
     }
 
     By logoutBtnBy = By.linkText("Logout");
-    By headerBy = By.xpath("//h1[text()='Account']");
+    By accountDetailsLinkBy = By.linkText("Account details");
+    By accountPageLinkBy = By.linkText("Account");
 
     public void logout() {
         getElement(logoutBtnBy).click();
     }
 
-    public String getPageHeaderText() {
-       return getElement(headerBy).getText();
+    public void navigateToAccountDetails() {
+        getElement(accountDetailsLinkBy).click();
+    }
+
+    public void navigateToAccountPage() {
+        getElement(accountPageLinkBy).click();
     }
 }

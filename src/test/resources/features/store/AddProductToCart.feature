@@ -1,3 +1,4 @@
+@showcase
 Feature: Add to Cart
 
     Background:
