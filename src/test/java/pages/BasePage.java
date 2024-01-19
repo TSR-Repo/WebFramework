@@ -57,5 +57,16 @@ public class BasePage {
         dropdown.selectByVisibleText(attribute);
     }
 
+    public void selectFromPseudoDropdown(By dropdownLocator, By pseudoDropdownItemsLocator, String attribute) {
+        getElement(dropdownLocator).click();
+        List<WebElement> optionsList = getElements(pseudoDropdownItemsLocator);
+        for (WebElement option : optionsList) {
+            if(option.getText().contains(attribute)) {
+                option.click();
+                break;
+            }
+        }
+    }
+
     
 }
