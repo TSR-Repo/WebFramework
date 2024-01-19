@@ -9,7 +9,13 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    By proceedToCheckoutBy = By.className("wc-proceed-to-checkout");
+
     public String getProductNameFromCart(String productName) {
         return getElement(By.linkText(productName)).getText();
+    }
+
+    public void proceedToCheckout() {
+        getElement(proceedToCheckoutBy).click();
     }
 }
