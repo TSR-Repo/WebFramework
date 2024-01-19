@@ -8,8 +8,8 @@ Feature: Checkout
         When the user navigates to the cart page
         And the user clicks on Proceed to Checkout button
         And the user fills in "<firstName>", "<lastName>", "<companyName>", "<country>", "<streetAddress>", "<town>", "<PINCode>", and "<phone>"
-        # And the user clicks on Place Order button
-        # And the user should see the message "Thank you. Your order has been received."
+        And the user clicks on Place Order button
+        And the user should see the message "Thank you. Your order has been received."
 
         Examples:
             | firstName | lastName | companyName | country | streetAddress | town     | PINCode | phone      |
