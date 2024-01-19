@@ -10,7 +10,7 @@ public class Hooks {
     private WebDriver driver;
     @Before
     public void setup() {
-        driver = DriverManager.initializeDriver();
+        driver = DriverManager.initializeDriver(System.getProperty("browser", "chrome"));
     }
 
     @After

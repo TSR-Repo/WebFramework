@@ -21,7 +21,7 @@ public class CheckoutPage extends BasePage {
     By postCodeFieldBy = By.id("billing_postcode");
     By billingPhoneFieldBy = By.id("billing_phone");
     By placeOrderBtnBy = By.id("place_order");
-    By successfulOrderNoticeBy = By.xpath("//p[contains@class, 'woocommerce-thankyou-order-received']");
+    By successfulOrderNoticeBy = By.cssSelector("p.woocommerce-notice.woocommerce-notice--success.woocommerce-thankyou-order-received");
 
 
     public void enterBillingFirstName(String firstName) {
