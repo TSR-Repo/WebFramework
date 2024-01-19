@@ -15,6 +15,7 @@ public class Checkout {
     @When("the user navigates to the cart page")
     public void the_user_navigates_to_the_cart_page() {
         new StorePage(driver).viewCart();
+        driver.navigate().refresh();
     }
 
     @When("the user clicks on Proceed to Checkout button")

@@ -1,3 +1,4 @@
+@showcase
 Feature: Add to Cart
 
     Background:
@@ -7,7 +8,7 @@ Feature: Add to Cart
     Scenario Outline: Add a product to cart
         When the user adds a "<product_name>" to cart
         And the user navigates to cart
-        # Then the added "<product_name>" should be present in the cart
+        Then the added "<product_name>" should be present in the cart
 
         Examples:
             | product_name     |

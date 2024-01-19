@@ -1,3 +1,4 @@
+@showcase
 Feature: Product Details
 
     Background:

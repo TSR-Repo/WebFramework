@@ -25,7 +25,6 @@ public class DriverManager {
             default:
                 throw new IllegalArgumentException("INVALID BROWSER VALUE: " + browser);
         }
-
         driver.manage().window().maximize();
 
         return driver;

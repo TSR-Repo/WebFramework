@@ -1,8 +1,8 @@
 package stepdefinitions;
 
-import org.openqa.selenium.By;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import factory.DriverManager;
 import io.cucumber.java.en.*;
 import pages.AuthenticationPage;
@@ -12,17 +12,14 @@ public class Logout {
 	private WebDriver driver = DriverManager.getDriver();
 	DashboardPage dashPage = new DashboardPage(driver);
 
-	@Given("a user is logged in")
-	public void a_user_is_logged_in() {
-		driver.get("https://askomdch.com/account/");
-		new AuthenticationPage(driver).login("wewison900@tsderp.com", "password");
-	}
+	// @Given("a user is logged in")
+	// public void a_user_is_logged_in() {
+	// 	new AuthenticationPage(driver).login("wewison900@tsderp.com", "password");
+	// }
 
 	@Given("the user is on account page")
 	public void the_user_is_on_account_page() {
-		String actualAccountPageHeaderText = dashPage.getPageHeaderText();
-		String expectedPageHeaderText = "Account";
-		dashPage.checkSimilarityOfText(actualAccountPageHeaderText, expectedPageHeaderText);
+		dashPage.navigateToAccountPage();
 	}
 
 	@When("the user clicks on Logout link")
@@ -31,10 +28,7 @@ public class Logout {
 	}
 
 	@Then("the user should be logged out")
-	public void the_user_should_be_logged_out() {
-		WebElement loginText = driver.findElement(By.xpath("//h2[text()=\"Login\"]"));
-		String expectedloginText = "Login";
-		String actualloginText = loginText.getText();
-		dashPage.checkSimilarityOfText(expectedloginText, actualloginText);
+	public void the_user_should_be_logged_out() throws NoSuchElementException {
+		new AuthenticationPage(driver).isUserLoggedOut();
 	}
 }

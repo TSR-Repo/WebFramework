@@ -1,9 +1,11 @@
+@showcase
 Feature: Checkout
 
     Background:
         Given a user is logged in
         And the user is on the store page
-    @product
+        And the user adds a "Basic Blue Jeans" to cart
+
     Scenario Outline: Checkout
         When the user navigates to the cart page
         And the user clicks on Proceed to Checkout button

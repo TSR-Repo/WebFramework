@@ -2,6 +2,7 @@ package pages;
 
 import static org.junit.Assert.assertTrue;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class StorePage extends BasePage {
     }
 
     public void viewProduct(String productName) {
-        getElement(By.xpath("//h2[text()='" + productName + "']")).click(); //"h2[text()='Blue Jeans']"
+        getElement(By.xpath("//h2[text()='" + productName + "']")).click();
     }
 
     public String getDisplayedProductName(String productName) {
@@ -36,7 +37,11 @@ public class StorePage extends BasePage {
     }
 
     public void addProductToCart(String productName) {
-        getElement(By.xpath("//a[@aria-label='Add “" + productName + "” to your cart']")).click();
+        String rawPath = "//a[@aria-label='Add “" + productName + "” to your cart']";
+        byte[] bytesPath = rawPath.getBytes(StandardCharsets.UTF_8);
+        String pathUtf8Encoded = new String(bytesPath, StandardCharsets.UTF_8);
+        By addTocartButtonBy = By.xpath(pathUtf8Encoded);
+        getElement(addTocartButtonBy).click();
     }
 
     public void viewCart() {
