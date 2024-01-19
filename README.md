@@ -1,5 +1,5 @@
 # Demo Web Framework for TS
-This framework was built using [GitHub Pages](https://github.com/TSR-Repo/WebFramework/).
+This framework was built using [askomdch webapplication/](https://askomdch.com/).
 
 ## Wireframe description:
 
